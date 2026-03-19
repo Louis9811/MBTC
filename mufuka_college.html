@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mufuka Business and Technical College</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:    #1e2a6e;
+  --maroon:  #8b1a1a;
+  --amber:   #c8922a;
+  --amber-lt:#e0aa4a;
+  --arch:    #b8b5b0;
+  --cream:   #faf7f2;
+  --white:   #ffffff;
+  --grey:    #6b7280;
+  --light:   #f0ece4;
+  --dark:    #0d1540;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.7rem 4%;
+  background:rgba(13,21,64,0.97);
+  backdrop-filter:blur(14px);
+  border-bottom:3px solid var(--amber);
+}
+.nav-logo{display:flex;align-items:center;gap:0.8rem;text-decoration:none;}
+.nav-logo img{height:56px;width:auto;object-fit:contain;filter:brightness(1.05);}
+.nav-brand{line-height:1.2;}
+.nav-brand .nb1{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:900;color:#fff;letter-spacing:0.05em;text-transform:uppercase;}
+.nav-brand .nb2{font-size:0.6rem;color:var(--amber);letter-spacing:0.16em;text-transform:uppercase;font-weight:600;}
+.nav-brand .nb3{font-size:0.5rem;color:var(--arch);font-style:italic;letter-spacing:0.08em;}
+.nav-links{display:flex;gap:1.8rem;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.72);text-decoration:none;font-size:0.84rem;font-weight:500;letter-spacing:0.04em;transition:color 0.2s;}
+.nav-links a:hover{color:var(--amber);}
+.nav-cta{background:var(--amber)!important;color:var(--navy)!important;padding:0.45rem 1.2rem;font-weight:700!important;border-radius:2px;}
+.nav-cta:hover{background:var(--amber-lt)!important;}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--dark);display:flex;align-items:center;position:relative;overflow:hidden;padding-top:80px;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 85% 50%,rgba(200,146,42,0.10) 0%,transparent 65%),radial-gradient(ellipse 35% 50% at 5% 80%,rgba(139,26,26,0.15) 0%,transparent 55%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(200,146,42,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,146,42,0.04) 1px,transparent 1px);background-size:56px 56px;}
+.hero-content{position:relative;z-index:2;padding:0 5%;max-width:1200px;margin:0 auto;width:100%;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.55rem;background:rgba(200,146,42,0.12);border:1px solid rgba(200,146,42,0.35);padding:0.38rem 1rem;border-radius:100px;margin-bottom:1.8rem;animation:fadeUp 0.8s ease both;}
+.hero-badge .dot{width:7px;height:7px;background:var(--amber);border-radius:50%;animation:pulse 2s ease infinite;}
+.hero-badge span{font-size:0.73rem;color:var(--amber);letter-spacing:0.14em;text-transform:uppercase;font-weight:600;}
+.hero-tagline{font-size:0.75rem;color:var(--arch);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.8rem;animation:fadeUp 0.8s ease both;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-0.02em;margin-bottom:1.4rem;animation:fadeUp 0.8s 0.1s ease both;}
+.hero h1 em{font-style:italic;color:var(--amber);}
+.hero p{font-size:1.05rem;color:rgba(255,255,255,0.6);max-width:540px;line-height:1.8;margin-bottom:2.2rem;font-weight:300;animation:fadeUp 0.8s 0.2s ease both;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp 0.8s 0.3s ease both;}
+.btn-primary{background:var(--amber);color:var(--navy);padding:0.88rem 2rem;font-weight:700;font-size:0.88rem;letter-spacing:0.06em;border:none;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.2s;text-transform:uppercase;border-radius:2px;}
+.btn-primary:hover{background:var(--amber-lt);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,146,42,0.35);}
+.btn-outline{background:transparent;color:#fff;padding:0.88rem 2rem;font-weight:600;font-size:0.88rem;letter-spacing:0.06em;border:1px solid rgba(255,255,255,0.22);cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.2s;text-transform:uppercase;border-radius:2px;}
+.btn-outline:hover{border-color:var(--amber);color:var(--amber);}
+.hero-stats{position:absolute;right:5%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:1.2rem;animation:fadeLeft 0.9s 0.4s ease both;}
+.stat-card{background:rgba(255,255,255,0.04);border:1px solid rgba(200,146,42,0.2);padding:1.3rem 1.7rem;border-radius:3px;text-align:center;min-width:140px;}
+.stat-card .num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--amber);line-height:1;margin-bottom:0.3rem;}
+.stat-card .lbl{font-size:0.68rem;color:rgba(255,255,255,0.45);letter-spacing:0.12em;text-transform:uppercase;}
+
+/* ACCREDITATION STRIP */
+.accred{background:var(--navy);padding:2rem 5%;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;}
+.accred p{font-size:0.72rem;color:rgba(255,255,255,0.4);letter-spacing:0.16em;text-transform:uppercase;}
+.accred-badges{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;}
+.ab{background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);padding:0.45rem 1.1rem;border-radius:2px;font-family:'DM Mono',monospace;font-size:0.76rem;color:var(--amber);font-weight:500;letter-spacing:0.08em;}
+
+/* SHARED */
+section{padding:5.5rem 5%;}
+.section-label{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--maroon);margin-bottom:0.7rem;display:block;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.8vw,2.9rem);font-weight:900;color:var(--navy);line-height:1.15;margin-bottom:0.9rem;}
+.section-sub{color:var(--grey);font-size:0.97rem;line-height:1.78;max-width:500px;font-weight:300;}
+.max-w{max-width:1200px;margin:0 auto;}
+
+/* ABOUT */
+.about{background:#fff;}
+.about-grid{display:block;}
+.about-img-box{background:var(--dark);height:400px;border-radius:3px;display:flex;align-items:center;justify-content:center;border:2px solid rgba(200,146,42,0.2);position:relative;overflow:hidden;}
+.about-logo-display{display:flex;flex-direction:column;align-items:center;gap:1rem;z-index:2;position:relative;padding:2rem;}
+.about-logo-display img{width:260px;height:auto;object-fit:contain;filter:drop-shadow(0 4px 20px rgba(0,0,0,0.5));}
+.value-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.2rem;}
+.val{padding:1.1rem;border:1px solid var(--light);border-radius:2px;transition:border-color 0.2s;}
+.val:hover{border-color:var(--amber);}
+.val .ico{font-size:1.4rem;margin-bottom:0.45rem;display:block;}
+.val h4{font-family:'Playfair Display',serif;font-size:0.93rem;font-weight:700;margin-bottom:0.2rem;color:var(--navy);}
+.val p{font-size:0.77rem;color:var(--grey);line-height:1.6;}
+
+/* PROGRAMMES */
+.programmes{background:var(--cream);}
+.prog-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
+.featured-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem;}
+.feat-card{background:var(--navy);color:#fff;padding:2.2rem;border-radius:3px;position:relative;overflow:hidden;border:1px solid rgba(200,146,42,0.2);transition:transform 0.3s;}
+.feat-card:hover{transform:translateY(-4px);}
+.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--maroon),var(--amber));}
+.feat-card .fc-label{font-size:0.65rem;color:var(--amber);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:0.6rem;display:block;font-family:'DM Mono',monospace;}
+.feat-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:0.6rem;}
+.feat-card p{font-size:0.83rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:1.2rem;}
+.feat-meta{display:flex;gap:0.8rem;flex-wrap:wrap;}
+.tag{font-size:0.68rem;background:rgba(200,146,42,0.12);border:1px solid rgba(200,146,42,0.25);color:var(--amber);padding:0.28rem 0.7rem;border-radius:100px;font-family:'DM Mono',monospace;letter-spacing:0.06em;}
+.qual-section{margin-top:2.5rem;}
+.qual-section h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:1.5rem;color:var(--navy);}
+.qual-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.qual-card{background:#fff;border:1px solid rgba(0,0,0,0.06);padding:1.4rem;border-radius:2px;transition:all 0.25s;border-left:3px solid transparent;}
+.qual-card:hover{border-left-color:var(--maroon);transform:translateX(3px);box-shadow:0 4px 16px rgba(26,31,94,0.07);}
+.qual-code{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--arch);letter-spacing:0.08em;margin-bottom:0.5rem;display:block;}
+.qual-card h4{font-size:0.88rem;font-weight:600;color:var(--navy);line-height:1.45;margin-bottom:0.4rem;}
+.qual-level{font-size:0.7rem;color:var(--maroon);font-weight:600;letter-spacing:0.06em;}
+.short-section{margin-top:2.5rem;}
+.short-section h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:1.5rem;color:var(--navy);}
+.short-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.short-card{background:var(--navy);padding:1.5rem 1.2rem;border-radius:3px;text-align:center;border:1px solid rgba(200,146,42,0.15);transition:all 0.25s;}
+.short-card:hover{border-color:var(--amber);transform:translateY(-3px);}
+.short-card .s-icon{font-size:1.8rem;margin-bottom:0.7rem;display:block;}
+.short-card h4{font-size:0.88rem;color:#fff;font-weight:600;margin-bottom:0.3rem;}
+.short-card p{font-size:0.72rem;color:rgba(255,255,255,0.45);}
+
+/* FEES */
+.fees{background:var(--navy);position:relative;overflow:hidden;}
+.fees::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 100% 50%,rgba(139,26,26,0.1),transparent 60%);}
+.fees-inner{position:relative;z-index:2;}
+.fees .section-label{color:var(--amber);}
+.fees .section-title{color:#fff;}
+.fees .section-sub{color:rgba(255,255,255,0.5);}
+.fees-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;align-items:start;}
+.fee-table{width:100%;border-collapse:collapse;}
+.fee-table th{text-align:left;font-size:0.72rem;color:var(--amber);letter-spacing:0.14em;text-transform:uppercase;padding:0.8rem 1rem;border-bottom:1px solid rgba(200,146,42,0.2);font-family:'DM Mono',monospace;}
+.fee-table td{padding:0.9rem 1rem;font-size:0.88rem;color:rgba(255,255,255,0.75);border-bottom:1px solid rgba(255,255,255,0.05);}
+.fee-table .total td{color:var(--amber);font-weight:700;font-size:0.95rem;border-top:2px solid rgba(200,146,42,0.3);border-bottom:none;background:rgba(200,146,42,0.06);}
+.fee-note-box{background:rgba(200,146,42,0.08);border:1px solid rgba(200,146,42,0.2);padding:2rem;border-radius:3px;}
+.fee-note-box h4{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;margin-bottom:0.8rem;}
+.fee-note-box p{font-size:0.83rem;color:rgba(255,255,255,0.55);line-height:1.75;margin-bottom:1rem;}
+.fee-note-box ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+.fee-note-box ul li{font-size:0.82rem;color:rgba(255,255,255,0.55);display:flex;gap:0.6rem;align-items:flex-start;}
+.fee-note-box ul li::before{content:'✓';color:var(--amber);font-weight:700;flex-shrink:0;}
+
+/* INNOVATION */
+.innovation{background:#fff;}
+.innov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.innov-card{padding:2rem 1.6rem;border:1px solid var(--light);border-radius:3px;transition:all 0.25s;}
+.innov-card:hover{border-color:var(--maroon);box-shadow:0 8px 28px rgba(26,31,94,0.08);}
+.innov-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:rgba(139,26,26,0.08);line-height:1;margin-bottom:0.8rem;}
+.innov-card h4{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem;}
+.innov-card p{font-size:0.82rem;color:var(--grey);line-height:1.7;}
+
+/* ADMISSIONS */
+.admissions{background:var(--cream);}
+.adm-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.steps{margin-top:2rem;display:flex;flex-direction:column;gap:1.5rem;}
+.step{display:flex;gap:1.2rem;align-items:flex-start;}
+.step-num{width:36px;height:36px;background:var(--maroon);color:#fff;font-family:'Playfair Display',serif;font-weight:900;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:50%;}
+.step-info h4{font-size:0.93rem;font-weight:600;color:var(--navy);margin-bottom:0.2rem;}
+.step-info p{font-size:0.81rem;color:var(--grey);line-height:1.65;}
+.apply-box{background:var(--navy);padding:2.5rem;border-radius:3px;border:1px solid rgba(200,146,42,0.2);}
+.apply-box h3{font-family:'Playfair Display',serif;font-size:1.55rem;color:#fff;margin-bottom:0.7rem;}
+.apply-box > p{font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.75;margin-bottom:1.8rem;}
+.apply-form{display:flex;flex-direction:column;gap:0.9rem;}
+.apply-form input,.apply-form select{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);padding:0.82rem 1rem;color:#fff;font-family:'DM Sans',sans-serif;font-size:0.84rem;border-radius:2px;outline:none;width:100%;transition:border-color 0.2s;}
+.apply-form input::placeholder{color:rgba(255,255,255,0.3);}
+.apply-form input:focus,.apply-form select:focus{border-color:var(--amber);}
+.apply-form select option{background:var(--navy);color:#fff;}
+
+/* CONTACT */
+.contact{background:#fff;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;}
+.contact-items{margin-top:2rem;display:flex;flex-direction:column;gap:1.4rem;}
+.ci{display:flex;gap:1rem;align-items:flex-start;}
+.ci-icon{width:42px;height:42px;background:rgba(139,26,26,0.08);border:1px solid rgba(139,26,26,0.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;border-radius:2px;}
+.ci h4{font-weight:600;font-size:0.88rem;color:var(--navy);margin-bottom:0.2rem;}
+.ci p,.ci a{font-size:0.82rem;color:var(--grey);line-height:1.65;text-decoration:none;display:block;}
+.ci a:hover{color:var(--maroon);}
+.contact-map-box{background:var(--dark);border-radius:3px;min-height:360px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid rgba(200,146,42,0.15);}
+.map-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(200,146,42,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(200,146,42,0.05) 1px,transparent 1px);background-size:40px 40px;}
+.map-inner{text-align:center;color:rgba(255,255,255,0.3);position:relative;z-index:2;}
+.map-inner .m-icon{font-size:3rem;margin-bottom:1rem;display:block;}
+.map-inner p{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;line-height:1.8;}
+
+/* FOOTER */
+footer{background:#080b2a;color:rgba(255,255,255,0.45);padding:3.5rem 5% 2rem;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+.foot-brand p{margin-top:0.8rem;font-size:0.8rem;color:rgba(255,255,255,0.33);line-height:1.75;}
+.foot-logo{display:flex;align-items:center;gap:0.8rem;margin-bottom:0.5rem;}
+.foot-logo img{height:48px;width:auto;object-fit:contain;}
+.foot-col h5{font-size:0.7rem;color:var(--amber);letter-spacing:0.17em;text-transform:uppercase;margin-bottom:1.1rem;font-weight:600;}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:0.55rem;}
+.foot-col ul a{font-size:0.8rem;color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s;}
+.foot-col ul a:hover{color:var(--amber);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-bottom p{font-size:0.73rem;color:rgba(255,255,255,0.22);}
+.footer-bottom a{color:var(--amber);text-decoration:none;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translate(22px,-50%)}to{opacity:1;transform:translate(0,-50%)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.8)}}
+
+@media(max-width:1024px){.hero-stats{display:none}.qual-grid{grid-template-columns:1fr 1fr}.footer-top{grid-template-columns:1fr 1fr}.innov-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.nav-links{display:none}.about-grid,.adm-grid,.contact-grid,.fees-grid,.featured-grid{grid-template-columns:1fr;gap:2rem}.qual-grid,.short-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr;gap:2rem}.innov-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#home">
+    
+    <div class="nav-brand">
+      <div class="nb1">Mufuka Business</div>
+      <div class="nb2">and Technical College</div>
+      <div class="nb3">"Taking Education to Greater Heights of Achievement"</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#programmes">Programmes</a></li>
+    <li><a href="#fees">Fees</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#admissions" class="nav-cta">Apply Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tagline">Hammanskraal &middot; Skampaneng Skills Centre</div>
+    <div class="hero-badge"><span class="dot"></span><span>2026 Intake Now Open</span></div>
+    <h1>Empowering<br><em>Hammanskraal</em><br>Through Skills.</h1>
+    <p>Mufuka Business and Technical College (MBTC) bridges the skills gap through accredited, job-ready programmes designed for immediate workplace integration.</p>
+    <div class="hero-btns">
+      <a href="#programmes" class="btn-primary">View Programmes</a>
+      <a href="#admissions" class="btn-outline">Apply Now</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card"><div class="num">10+</div><div class="lbl">Qualifications</div></div>
+    <div class="stat-card"><div class="num">3</div><div class="lbl">Accrediting Bodies</div></div>
+    <div class="stat-card"><div class="num">24/7</div><div class="lbl">WhatsApp Support</div></div>
+  </div>
+</section>
+
+<!-- ACCREDITATION -->
+<div class="accred">
+  <p>Accredited by</p>
+  <div class="accred-badges">
+    <div class="ab">MICTSETA</div><div class="ab">PSETA</div><div class="ab">QCTO</div><div class="ab">NQF Aligned</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="max-w about-grid">
+    </div>
+    <div>
+      <span class="section-label">Who We Are</span>
+      <h2 class="section-title">Bridging the<br>Skills Gap</h2>
+      <p class="section-sub">Mufuka Business and Technical College (MBTC) is a leading TVET provider in the Hammanskraal region, based at the Skampaneng Skills Centre. We empower matriculants, unemployed youth, and working professionals with the technical expertise needed to thrive in today's dynamic job market.</p>
+      <div class="value-grid">
+        <div class="val"><span class="ico">&#127891;</span><h4>Accredited Qualifications</h4><p>Certificates aligned to MICTSETA, PSETA and QCTO standards.</p></div>
+        <div class="val"><span class="ico">&#128188;</span><h4>Job-Ready Graduates</h4><p>Programmes designed for immediate workplace integration.</p></div>
+        <div class="val"><span class="ico">&#128187;</span><h4>Flexible Delivery</h4><p>Classroom, online and hybrid options to suit your lifestyle.</p></div>
+        <div class="val"><span class="ico">&#127758;</span><h4>Community Focus</h4><p>Directly combating unemployment in the Hammanskraal region.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMMES -->
+<section class="programmes" id="programmes">
+  <div class="max-w">
+    <div class="prog-header">
+      <div><span class="section-label">What We Offer</span><h2 class="section-title">Our Programmes</h2></div>
+      <p class="section-sub">Industry-relevant qualifications from NQF Level 3 to Level 6.</p>
+    </div>
+    <div class="featured-grid">
+      <div class="feat-card">
+        <span class="fc-label">&#11088; Featured Programme</span>
+        <h3>Occupational Certificate: Cybersecurity Analyst</h3>
+        <p>Protecting computer systems, networks and data from cyber threats. Gain hands-on expertise in threat analysis, network defence, and incident response.</p>
+        <div class="feat-meta"><span class="tag">NQF Level 5</span><span class="tag">12 Months</span><span class="tag">Classroom / Online / Hybrid</span></div>
+      </div>
+      <div class="feat-card">
+        <span class="fc-label">&#11088; Featured Programme</span>
+        <h3>National Certificate: End User Computing</h3>
+        <p>Essential digital literacy and office productivity tools. Build a strong foundation for any modern workplace with certified computing skills.</p>
+        <div class="feat-meta"><span class="tag">NQF Level 3</span><span class="tag">Entry Level</span><span class="tag">Classroom / Online</span></div>
+      </div>
+    </div>
+    <div class="qual-section">
+      <h3>Full Qualification List</h3>
+      <div class="qual-grid">
+        <div class="qual-card"><span class="qual-code">78065</span><h4>FET Certificate: IT Systems Development</h4><span class="qual-level">NQF Level 4</span></div>
+        <div class="qual-card"><span class="qual-code">78964</span><h4>FET Certificate: IT Technical Support</h4><span class="qual-level">NQF Level 4</span></div>
+        <div class="qual-card"><span class="qual-code">59057</span><h4>FET Certificate: Telecommunication Network Operations</h4><span class="qual-level">NQF Level 4</span></div>
+        <div class="qual-card"><span class="qual-code">48872</span><h4>National Certificate: IT System Development</h4><span class="qual-level">NQF Level 5</span></div>
+        <div class="qual-card"><span class="qual-code">48573</span><h4>National Certificate: IT System Support</h4><span class="qual-level">NQF Level 5</span></div>
+        <div class="qual-card"><span class="qual-code">63909</span><h4>National Certificate: Business Analysis</h4><span class="qual-level">NQF Level 6</span></div>
+        <div class="qual-card"><span class="qual-code">58820</span><h4>National Certificate: Advertising</h4><span class="qual-level">NQF Level 5</span></div>
+        <div class="qual-card"><span class="qual-code">57824</span><h4>FET Certificate: Public Administration</h4><span class="qual-level">NQF Level 4</span></div>
+        <div class="qual-card"><span class="qual-code">57804</span><h4>National Certificate: Public Administration</h4><span class="qual-level">NQF Level 3</span></div>
+        <div class="qual-card"><span class="qual-code">50060</span><h4>National Certificate: Public Administration</h4><span class="qual-level">NQF Level 5</span></div>
+      </div>
+    </div>
+    <div class="short-section">
+      <h3>Specialised Short Courses</h3>
+      <div class="short-grid">
+        <div class="short-card"><span class="s-icon">&#128222;</span><h4>Call Centre Operations</h4><p>3 Months</p></div>
+        <div class="short-card"><span class="s-icon">&#128187;</span><h4>Computer Literacy</h4><p>3 - 6 Months</p></div>
+        <div class="short-card"><span class="s-icon">&#127760;</span><h4>Web Design</h4><p>Short Course</p></div>
+        <div class="short-card"><span class="s-icon">&#128214;</span><h4>Bookkeeping and Accounting</h4><p>Short Course</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEES -->
+<section class="fees" id="fees">
+  <div class="max-w fees-inner">
+    <span class="section-label">2026 Intake</span>
+    <h2 class="section-title">Fee Structure</h2>
+    <p class="section-sub">Quality education made accessible. Fees shown are for our flagship Cybersecurity programme.</p>
+    <div class="fees-grid">
+      <table class="fee-table">
+        <thead><tr><th>Item</th><th>Amount</th></tr></thead>
+        <tbody>
+          <tr><td>Registration Fee (General)</td><td>R 300</td></tr>
+          <tr><td>Cybersecurity Application Fee</td><td>R 500</td></tr>
+          <tr><td>Cybersecurity Tuition Fee</td><td>R 32,500</td></tr>
+          <tr><td>Cybersecurity Learning Materials</td><td>R 2,000</td></tr>
+          <tr class="total"><td>Total Cybersecurity Investment</td><td>R 35,000</td></tr>
+        </tbody>
+      </table>
+      <div class="fee-note-box">
+        <h4>What is Included</h4>
+        <p>Your investment covers everything you need to complete the programme and enter the workforce with confidence.</p>
+        <ul>
+          <li>All learning materials and resources</li>
+          <li>Classroom, online and hybrid access</li>
+          <li>Registration with accrediting body</li>
+          <li>Certificate of completion</li>
+          <li>24/7 WhatsApp student support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INNOVATION -->
+<section class="innovation" id="innovation">
+  <div class="max-w">
+    <span class="section-label">Strategic Growth</span>
+    <h2 class="section-title">Digital Innovation</h2>
+    <p class="section-sub">MBTC is committed to continuous improvement and digital transformation to better serve our students and community.</p>
+    <div class="innov-grid">
+      <div class="innov-card"><div class="innov-num">01</div><h4>WhatsApp Business Automation</h4><p>24/7 automated inquiry system providing instant information on courses, fees, and campus location.</p></div>
+      <div class="innov-card"><div class="innov-num">02</div><h4>Blended Learning</h4><p>Flexible classroom, online, and hybrid delivery modes to accommodate diverse student needs without compromising quality.</p></div>
+      <div class="innov-card"><div class="innov-num">03</div><h4>Community Impact</h4><p>Directly combating local unemployment by aligning training with the National Qualifications Framework and industry demands.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMISSIONS -->
+<section class="admissions" id="admissions">
+  <div class="max-w adm-grid">
+    <div>
+      <span class="section-label">Enrolment</span>
+      <h2 class="section-title">How to Apply</h2>
+      <p class="section-sub">Joining MBTC is simple. Follow the steps below to start your journey.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-info"><h4>Choose Your Programme</h4><p>Browse our qualifications and short courses and identify the right fit for your career goals.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-info"><h4>Submit Your Application</h4><p>Complete the enquiry form, WhatsApp us, or visit the Skampaneng Skills Centre in person.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-info"><h4>Receive Confirmation</h4><p>Our admissions team will confirm your place and send registration instructions within 2-3 days.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-info"><h4>Pay and Register</h4><p>Complete payment of the registration fee and you are officially enrolled at MBTC.</p></div></div>
+      </div>
+    </div>
+    <div class="apply-box">
+      <h3>Enquire Now</h3>
+      <p>Fill in your details and our team will contact you within 2 working days with everything you need to enrol.</p>
+      <div class="apply-form">
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email Address">
+        <input type="tel" placeholder="Phone / WhatsApp Number">
+        <select>
+          <option value="" disabled selected>Programme of Interest</option>
+          <option>Cybersecurity Analyst (NQF 5)</option>
+          <option>End User Computing (NQF 3)</option>
+          <option>FET: IT Systems Development (NQF 4)</option>
+          <option>FET: IT Technical Support (NQF 4)</option>
+          <option>FET: Telecommunication Network Operations (NQF 4)</option>
+          <option>NC: IT System Development (NQF 5)</option>
+          <option>NC: IT System Support (NQF 5)</option>
+          <option>NC: Business Analysis (NQF 6)</option>
+          <option>NC: Advertising (NQF 5)</option>
+          <option>FET: Public Administration (NQF 4)</option>
+          <option>NC: Public Administration (NQF 3)</option>
+          <option>NC: Public Administration (NQF 5)</option>
+          <option>Short Course: Call Centre Operations</option>
+          <option>Short Course: Computer Literacy</option>
+          <option>Short Course: Web Design</option>
+          <option>Short Course: Bookkeeping and Accounting</option>
+        </select>
+        <button class="btn-primary" style="width:100%;padding:1rem;" onclick="alert('Thank you! We will contact you shortly. You can also WhatsApp us at 071 706 7661.')">Send Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="max-w contact-grid">
+    <div>
+      <span class="section-label">Find Us</span>
+      <h2 class="section-title">Contact and<br>Location</h2>
+      <p class="section-sub">Reach out via phone, email, or WhatsApp, or visit us at the Skampaneng Skills Centre.</p>
+      <div class="contact-items">
+        <div class="ci"><div class="ci-icon">&#128205;</div><div><h4>Physical Address</h4><p>Skampaneng Skills Centre<br>6753 Tsala Street, Temba Unit 7<br>Hammanskraal</p></div></div>
+        <div class="ci"><div class="ci-icon">&#128222;</div><div><h4>Phone</h4><a href="tel:0717067661">071 706 7661</a><a href="tel:0794178588">079 417 8588</a></div></div>
+        <div class="ci"><div class="ci-icon">&#9993;</div><div><h4>Email</h4><a href="mailto:mufuka.juliet@gmail.com">mufuka.juliet@gmail.com</a></div></div>
+        <div class="ci"><div class="ci-icon">&#128172;</div><div><h4>WhatsApp</h4><p>Available 24/7 for automated inquiries on courses, fees, and location.</p><a href="https://wa.me/27717067661" style="color:var(--maroon);font-weight:600;">Chat on WhatsApp &#8594;</a></div></div>
+      </div>
+    </div>
+    <div class="contact-map-box">
+      <div class="map-grid-bg"></div>
+      <div class="map-inner">
+        <span class="m-icon">&#128205;</span>
+        <p>Skampaneng Skills Centre<br>6753 Tsala Street<br>Temba Unit 7, Hammanskraal</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="max-w">
+    <div class="footer-top">
+      <div class="foot-brand">
+        <div style="font-size:0.6rem;color:var(--amber);letter-spacing:0.16em;text-transform:uppercase;font-weight:600;">and Technical College</div>
+          </div>
+        </div>
+        <p>"Taking Education to Greater Heights of Achievement." Empowering Hammanskraal through Skills and Excellence at the Skampaneng Skills Centre.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Programmes</h5>
+        <ul>
+          <li><a href="#programmes">Cybersecurity Analyst</a></li>
+          <li><a href="#programmes">End User Computing</a></li>
+          <li><a href="#programmes">IT Systems Development</a></li>
+          <li><a href="#programmes">Business Analysis</a></li>
+          <li><a href="#programmes">Public Administration</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Short Courses</h5>
+        <ul>
+          <li><a href="#programmes">Call Centre Operations</a></li>
+          <li><a href="#programmes">Computer Literacy</a></li>
+          <li><a href="#programmes">Web Design</a></li>
+          <li><a href="#programmes">Bookkeeping</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:0717067661">071 706 7661</a></li>
+          <li><a href="tel:0794178588">079 417 8588</a></li>
+          <li><a href="mailto:mufuka.juliet@gmail.com">mufuka.juliet@gmail.com</a></li>
+          <li><a href="#contact">Temba Unit 7, Hammanskraal</a></li>
+          <li><a href="https://wa.me/27717067661">WhatsApp 24/7</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>2026 Mufuka Business and Technical College. All rights reserved. Accredited by MICTSETA &middot; PSETA &middot; QCTO.</p>
+      <p><a href="#">Privacy Policy</a> &middot; <a href="#">Terms of Use</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
